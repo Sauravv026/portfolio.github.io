@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurav Parajuli | Welcome</title>
+    <style>
+        /* =========================================
+           1. GLOBAL STYLES (Grey & White Theme)
+           ========================================= */
+        :root {
+            /* Palette: Grey and White */
+            --bg-color: #f4f6f8;          /* Light Grey Background */
+            --text-color: #333333;        /* Dark Grey Text */
+            --text-light: #666666;        /* Medium Grey Text */
+            
+            --nav-bg: #ffffff;            /* White Navbar */
+            --card-bg: #ffffff;           /* White Cards */
+            
+            --accent-primary: #4a4a4a;    /* Dark Grey */
+            --accent-secondary: #7a7a7a;  /* Medium Grey */
+            --accent-tertiary: #b0b0b0;   /* Light Grey */
+            
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 10px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        /* =========================================
+           2. HEADER & NAVIGATION
+           ========================================= */
+        header {
+            background-color: var(--nav-bg);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-primary);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* =========================================
+           3. HERO SECTION & ROBOT
+           ========================================= */
+        .hero-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh; /* Ensures content is centered even on small screens */
+        }
+
+        .welcome-text {
+            margin-bottom: 2rem;
+            z-index: 10;
+            padding: 0 1rem;
+        }
+
+        .welcome-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-primary);
+            background: none;
+            -webkit-text-fill-color: var(--accent-primary);
+            line-height: 1.2;
+        }
+
+        .welcome-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Robot Container - Responsive Adjustments */
+        .robot-container {
+            position: relative;
+            width: 150px;
+            height: 200px;
+            margin: 2rem 0;
+            z-index: 5;
+            /* Responsive scaling */
+            max-width: 100%;
+            max-height: 40vh;
+        }
+
+        /* Robot Parts - Grey Theme */
+        .robot-head {
+            width: 60px;
+            height: 50px;
+            background: #d1d1d1; /* Light Grey */
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid #999;
+            z-index: 2;
+        }
+
+        .robot-eyes {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 15px;
+        }
+
+        .eye {
+            width: 10px;
+            height: 10px;
+            background: #100f0f; /* Dark Eyes */
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        .robot-body {
+            width: 80px;
+            height: 100px;
+            background: #876ddb; /* Medium Grey */
+            border-radius: 15px;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            border: 2px solid #bbb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s ease-in-out;
+        }
+
+        .robot-chest {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid #999;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .robot-arm {
+            width: 15px;
+            height: 80px;
+            background: #6679da;
+            position: absolute;
+            top: 55px;
+            border-radius: 10px;
+            transition: transform 1s ease-in-out;
+            transform-origin: top center;
+        }
+
+        .robot-arm.left {
+            left: 45px;
+            transform: rotate(0deg);
+        }
+
+        .robot-arm.right {
+            right: 45px;
+            transform: rotate(0deg);
+        }
+
+        .robot-hand {
+            width: 20px;
+            height: 20px;
+            background: #bbb;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -10px;
+            left: -2.5px;
+        }
+
+        /* =========================================
+           4. ANIMATIONS
+           ========================================= */
+        
+        /* Bow Animation Class */
+        .robot-container.bowing .robot-body {
+            transform: translateX(-50%) rotate(20deg);
+        }
+
+        .robot-container.bowing .robot-arm.left {
+            transform: rotate(60deg);
+        }
+
+        .robot-container.bowing .robot-arm.right {
+            transform: rotate(-60deg);
+        }
+
+        /* Fireworks Particles */
+        .firework {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* =========================================
+           5. CTA BUTTONS
+           ========================================= */
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+            z-index: 10;
+        }
+
+        .cta-button {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: #fff;
+            /* Ensure buttons don't overflow on small screens */
+            max-width: 100%; 
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-primary), #666);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, var(--accent-secondary), #999);
+            color: #fff;
+        }
+
+        .btn-tertiary {
+            background: linear-gradient(45deg, var(--accent-tertiary), #ccc);
+            color: #333;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* =========================================
+           6. FOOTER
+           ========================================= */
+        footer {
+            background-color: var(--nav-bg);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           7. RESPONSIVE MEDIA QUERIES
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Navigation */
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0.5rem;
+            }
+            
+            /* Typography */
+            .welcome-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .welcome-text p {
+                font-size: 1rem;
+            }
+            
+            /* Robot Scaling */
+            .robot-container {
+                width: 120px;
+                height: 160px;
+            }
+            
+            .robot-body {
+                width: 60px;
+                height: 80px;
+                top: 40px;
+            }
+            
+            .robot-arm {
+                height: 60px;
+                top: 45px;
+            }
+            
+            /* Buttons */
+            .cta-button {
+                width: 100%; /* Full width buttons on mobile for easier tapping */
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            header {
+                padding: 0.8rem 1rem;
+            }
+            
+            .hero-section {
+                padding: 1rem;
+            }
+            
+            .robot-container {
+                width: 100px;
+                height: 130px;
+            }
+            
+            .robot-body {
+                width: 50px;
+                height: 70px;
+                top: 35px;
+            }
+            
+            .robot-arm {
+                height: 50px;
+                top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="creative.html">Creative Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main class="hero-section">
+        
+        <!-- Robot Avatar -->
+        <div class="robot-container" id="robot">
+            <div class="robot-head">
+                <div class="robot-eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+            </div>
+            <div class="robot-body">
+                <div class="robot-chest"></div>
+            </div>
+            <div class="robot-arm left">
+                <div class="robot-hand"></div>
+            </div>
+            <div class="robot-arm right">
+                <div class="robot-hand"></div>
+            </div>
+        </div>
+
+        <!-- Welcome Text -->
+        <div class="welcome-text">
+            <h1>🙏 Namaste! Welcome to my digital space! 🤖✨</h1>
+            <p>I am Saurav Parajuli. I build things, write stories, and compose melodies. Explore my world below.</p>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="cta-container">
+            <a href="skills.html" class="cta-button btn-primary">My Skills</a>
+            <a href="projects.html" class="cta-button btn-secondary">Projects</a>
+            <a href="creative.html" class="cta-button btn-tertiary">Creative Works</a>
+            <a href="contact.html" class="cta-button btn-primary">Contact Me</a>
+        </div>
+
+        <!-- Fireworks Container (Particles will be injected here) -->
+        <div id="fireworks-container"></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Saurav Parajuli. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const robot = document.getElementById('robot');
+            const fireworksContainer = document.getElementById('fireworks-container');
+            
+            // 1. Trigger Robot Bow Animation
+            // Function to start the bow
+            function startBow() {
+                // Add class to trigger CSS animation
+                robot.classList.add('bowing');
+                
+                // Trigger fireworks
+                createFireworks();
+                
+                // Remove class after animation completes (1s) to allow re-triggering
+                setTimeout(() => {
+                    robot.classList.remove('bowing');
+                }, 1000);
+            }
+
+            // 2. Loop Animation every 5 seconds
+            // Start immediately, then repeat every 5 seconds
+            startBow();
+            setInterval(startBow, 2000);
+
+            function createFireworks() {
+                // Grey/White Firework Colors
+                const colors = ['#ffffff', '#d1d1d1', '#b0b0b0', '#999999', '#e0e0e0'];
+                const particleCount = 30; // Number of particles per burst
+
+                // Create multiple bursts
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        burstFirework();
+                    }, i * 300); // Stagger bursts
+                }
+            }
+
+            function burstFirework() {
+                // Responsive center calculation
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2 - 100; // Slightly above center
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('firework');
+                    
+                    // Random color from grey palette
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.backgroundColor = color;
+                    
+                    // Start position (center of screen)
+                    particle.style.left = centerX + 'px';
+                    particle.style.top = centerY + 'px';
+                    
+                    // Random direction and distance
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = Math.random() * 100 + 30; // Distance to travel
+                    const tx = Math.cos(angle) * velocity;
+                    const ty = Math.sin(angle) * velocity;
+
+                    // Animate
+                    const animation = particle.animate([
+                        { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                        { transform: `translate(${tx}px, ${ty}px) scale(0)`, opacity: 0 }
+                    ], {
+                        duration: 1000 + Math.random() * 300,
+                        easing: 'cubic-bezier(0, .9, .57, 1)',
+                    });
+
+                    // Add to DOM
+                    fireworksContainer.appendChild(particle);
+
+                    // Remove from DOM after animation
+                    animation.onfinish = () => {
+                        particle.remove();
+                    };
+                }
+            }
+        });
+    </script>
+</body>
+</html>

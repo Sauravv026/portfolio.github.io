@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurav Parajuli | Skills</title>
+    <style>
+        /* =========================================
+           1. GLOBAL STYLES (Grey & White Theme)
+           ========================================= */
+        :root {
+            /* Palette: Grey and White */
+            --bg-color: #f4f6f8;          /* Light Grey Background */
+            --text-color: #333333;        /* Dark Grey Text */
+            --text-light: #666666;        /* Medium Grey Text */
+            
+            --nav-bg: #ffffff;            /* White Navbar */
+            --card-bg: #ffffff;           /* White Cards */
+            
+            --accent-primary: #4a4a4a;    /* Dark Grey */
+            --accent-secondary: #7a7a7a;  /* Medium Grey */
+            --accent-tertiary: #b0b0b0;   /* Light Grey */
+            
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 10px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        /* =========================================
+           2. HEADER & NAVIGATION
+           ========================================= */
+        header {
+            background-color: var(--nav-bg);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-primary);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* =========================================
+           3. MAIN CONTENT & SKILLS GRID
+           ========================================= */
+        main {
+            flex: 1;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .skills-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .skills-intro h1 {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-intro p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns by default */
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category h2 {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-tertiary);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .skill-level {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background-color: #f0f0f0;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* =========================================
+           4. FOOTER
+           ========================================= */
+        footer {
+            background-color: var(--nav-bg);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           5. RESPONSIVE MEDIA QUERIES
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Navigation */
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0.5rem;
+            }
+            
+            /* Main Content */
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .skills-intro h1 {
+                font-size: 2rem;
+            }
+
+            /* Grid becomes single column on mobile */
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .skill-category {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.8rem 1rem;
+            }
+            
+            .skills-intro h1 {
+                font-size: 1.5rem;
+            }
+            
+            .skill-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+            }
+            
+            .skill-level {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="skills.html" class="active">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="creative.html">Creative Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="skills">
+        <section class="skills-intro">
+            <h1>My Skills & Expertise</h1>
+            <p>A blend of technical proficiency and artistic expression.</p>
+        </section>
+
+        <div class="skills-grid">
+            
+            <!-- Programming Skills -->
+            <article class="skill-category">
+                <h2>Programming & Development</h2>
+                <ul class="skill-list">
+                    <li>
+                        <span class="skill-name">HTML5</span>
+                        <span class="skill-level">Expert</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">CSS</span>
+                        <span class="skill-level">Advanced</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-level">Intermediate</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">PHP</span>
+                        <span class="skill-level">Intermediate</span>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- Creative Skills -->
+            <article class="skill-category">
+                <h2>Creative Arts</h2>
+                <ul class="skill-list">
+                    <li>
+                        <span class="skill-name">Creative Writing</span>
+                        <span class="skill-level">Advanced</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Songwriting</span>
+                        <span class="skill-level">Expert</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Lyricism</span>
+                        <span class="skill-level">Expert</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Music Composition</span>
+                        <span class="skill-level">Intermediate</span>
+                    </li>
+                </ul>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Saurav Parajuli. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
